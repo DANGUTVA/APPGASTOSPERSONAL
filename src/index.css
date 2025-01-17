@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos base responsivos */
+@layer base {
+  html {
+    @apply text-base;
+  }
+  
+  html {
+    @apply xs:text-sm sm:text-base md:text-base;
+  }
+}
+
+/* Clases de utilidad personalizadas */
+@layer components {
+  .container {
+    @apply px-4 mx-auto xs:max-w-full sm:px-6 sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px];
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8;
+  }
+
+  .input-base {
+    @apply w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-md 
+           focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 
+           transition-colors duration-200;
+  }
+
+  .button-base {
+    @apply px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-medium
+           transition-all duration-200 focus:outline-none focus:ring-2
+           focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .button-primary {
+    @apply button-base bg-indigo-600 text-white hover:bg-indigo-700
+           focus:ring-indigo-500;
+  }
+
+  .button-secondary {
+    @apply button-base border border-gray-300 text-gray-700
+           hover:bg-gray-50 focus:ring-gray-500;
+  }
+}
+
+/* Menú de exportación */
+.export-menu {
+  @apply absolute bottom-16 right-0 bg-white rounded-lg shadow-lg p-2 w-48;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: visibility 0s linear 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+.export-menu.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+/* Animación del botón de descarga */
+.download-button {
+  @apply transition-transform duration-300 ease-in-out;
+  transform: rotate(0deg);
+  transform-origin: center;
+}
+
+.download-button.rotated {
+  transform: rotate(225deg); /* Ajustado a 225 grados para que coincida con la imagen */
+}
+
+/* Mejoras de accesibilidad */
+.export-menu-button:focus-visible {
+  @apply outline-none ring-2 ring-indigo-500 ring-offset-2;
+}
+
+/* Optimizaciones para dispositivos táctiles */
+@media (hover: none) {
+  .export-menu-button {
+    @apply p-4;
+  }
+  
+  .export-menu-item {
+    @apply p-4;
+  }
+}
+
+/* Ajustes para scrolling en dispositivos móviles */
+@supports (-webkit-overflow-scrolling: touch) {
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+  }
+}
